@@ -69,7 +69,23 @@
 }
 
 .hero__proof {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
   margin-top: var(--space-5);
+  font-size: var(--fs-sm);
+  font-weight: var(--w-medium);
+  color: var(--ink-soft);
+}
+
+.hero__proof .icon {
+  width: var(--icon-sm);
+  height: var(--icon-sm);
+  color: var(--terra);
+}
+
+.hero__proof-label {
+  text-align: left;
 }
 
 .hero__stage {
