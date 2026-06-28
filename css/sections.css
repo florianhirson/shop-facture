@@ -290,6 +290,102 @@
   color: var(--panel-ink-faint);
 }
 
+/* ── SECTION : À PROPOS ────────────────────────────────────────────────── */
+.about__card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-12);
+  align-items: start;
+  max-width: var(--w-hero-stage);
+  margin-inline: auto;
+}
+
+.about__media {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  text-align: center;
+}
+
+.about__coin {
+  display: grid;
+  place-items: center;
+  width: var(--size-portrait);
+  height: var(--size-portrait);
+  border-radius: 50%;
+  background: var(--terra);
+  color: var(--on-terra);
+  font-family: var(--font-display);
+  font-weight: var(--w-black);
+  font-size: var(--fs-h1);
+  line-height: 1;
+}
+
+.about__photo {
+  width: var(--size-portrait);
+  height: var(--size-portrait);
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.about__id {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.about__name {
+  font-family: var(--font-display);
+  font-weight: var(--w-bold);
+  font-size: var(--fs-h4);
+  color: var(--ink);
+}
+
+.about__role {
+  font-size: var(--fs-sm);
+  color: var(--ink-soft);
+}
+
+.about__title {
+  margin-top: var(--space-3);
+  font-size: var(--fs-h2);
+  font-weight: var(--w-black);
+  letter-spacing: var(--ls-display);
+  line-height: var(--lh-tight);
+  color: var(--ink);
+}
+
+.about__text {
+  margin-top: var(--space-4);
+  font-size: var(--fs-lg);
+  color: var(--ink-soft);
+  line-height: var(--lh-body);
+}
+
+.about__points {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+}
+
+.about__point {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--fs-body);
+  font-weight: var(--w-medium);
+  color: var(--ink);
+}
+
+.about__point .icon {
+  flex: none;
+  width: var(--icon-sm);
+  height: var(--icon-sm);
+  color: var(--sage);
+}
+
 /* ── SECTION : CONTACT ─────────────────────────────────────────────────── */
 .contact__head {
   max-width: var(--w-prose);

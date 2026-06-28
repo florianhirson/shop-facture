@@ -166,6 +166,7 @@
   --size-avatar:    24px;  /* pastille de la pile d'avatars                  */
   --size-dot:       11px;  /* point de la barre du mock                      */
   --size-textarea:  96px;  /* hauteur minimale de la zone de texte           */
+  --size-portrait:  116px; /* portrait / avatar du fondateur (section À propos)*/
   --size-turnstile: 65px;  /* réservation de place pour le widget Turnstile  */
   --blur-nav:       12px;  /* flou d'arrière-plan de la nav                  */
   --reveal-shift:   18px;  /* décalage initial de l'apparition au scroll     */
