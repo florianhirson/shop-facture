@@ -1,0 +1,131 @@
+/* ── BREAKPOINTS
+   --bp-md : 768px  (tablette)
+   --bp-lg : 1024px (desktop)
+   Approche mobile-first : les mises en page denses (grilles 3–4 colonnes,
+   panneaux côte à côte) se réorganisent ici vers le bas.
+────────────────────────────────────────────────────────────────────────── */
+
+/* Accessibilité : on coupe les animations si l'utilisateur le demande. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* ── ≤ 1024px — TABLETTE / PETIT DESKTOP ───────────────────────────────── */
+@media (max-width: 1024px) {
+  .benefits__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer__grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .footer__brand-col {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ── ≤ 768px — MOBILE ──────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  :root {
+    --section-y: 64px;
+    --container-pad: 20px;
+  }
+
+  /* Navigation : on masque les ancres et la démo secondaire ;
+     seul le CTA principal reste visible. */
+  .nav__links {
+    display: none;
+  }
+
+  .nav__actions .btn--ghost {
+    display: none;
+  }
+
+  /* Hero : le segment accentué peut passer à la ligne pour éviter
+     tout débordement horizontal sur petit écran. */
+  .hero__accent {
+    white-space: normal;
+  }
+
+  .hero__underline {
+    left: 0;
+    width: 100%;
+  }
+
+  /* Grilles → une seule colonne */
+  .problem__grid,
+  .steps__grid,
+  .benefits__grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Tableau de bord : les deux listes s'empilent, l'éclair pivote au milieu. */
+  .mock__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  .mock__bolt {
+    justify-self: center;
+    transform: rotate(90deg);
+  }
+
+  /* StatTile : le grand chiffre passe au-dessus du texte. */
+  .stat {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    padding: 40px 28px;
+    text-align: center;
+  }
+
+  /* Réforme : panneau en une colonne. */
+  .reform__panel {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+    padding: var(--space-8);
+  }
+
+  .reform__row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+  }
+
+  /* Footer : marque pleine largeur, liens sur deux colonnes. */
+  .footer__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .footer__brand-col {
+    grid-column: 1 / -1;
+  }
+
+  /* Formulaire : prénom / email s'empilent. */
+  .form__row {
+    grid-template-columns: 1fr;
+  }
+
+  /* Boutons hero pleine largeur pour des cibles tactiles confortables. */
+  .hero__ctas .btn {
+    flex: 1 1 100%;
+  }
+}
+
+/* ── ≤ 460px — TRÈS PETITS ÉCRANS ──────────────────────────────────────── */
+@media (max-width: 460px) {
+  .footer__grid {
+    grid-template-columns: 1fr;
+  }
+}

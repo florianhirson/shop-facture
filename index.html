@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO -->
+  <title>Shopfacture — Vos factures Shopify générées automatiquement</title>
+  <meta name="description"
+    content="Automatisez vos factures Shopify avec Abby. Chaque commande génère et envoie la facture toute seule. Mise en place en 48h, conforme à la loi française.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://shopfacture.fr">
+  <meta property="og:title" content="Shopfacture — Factures Shopify automatiques">
+  <meta property="og:description"
+    content="Zéro ressaisie. Chaque commande génère sa facture toute seule.">
+  <meta property="og:url" content="https://shopfacture.fr">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts — Bricolage Grotesque (display), Hanken Grotesk (texte),
+       IBM Plex Mono (références de facture). Polices du design system. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Hanken+Grotesk:wght@400..700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/sections.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <!-- Cloudflare Turnstile -->
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+</head>
+<body>
+
+  <!-- ── Sprite d'icônes (SVG inline, sans dépendance externe) ──────────── -->
+  <svg aria-hidden="true" width="0" height="0" focusable="false">
+    <symbol id="ic-bolt" viewBox="0 0 24 24"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></symbol>
+    <symbol id="ic-receipt" viewBox="0 0 24 24"><path d="M5 3h14v18l-3-2-2 2-2-2-2 2-2-2-3 2zM8 8h8M8 12h8"/></symbol>
+    <symbol id="ic-arrow-right" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></symbol>
+    <symbol id="ic-check" viewBox="0 0 24 24"><path d="M5 12l4 4 10-11"/></symbol>
+    <symbol id="ic-bag" viewBox="0 0 24 24"><path d="M6 8h12l1 12H5zM9 8a3 3 0 0 1 6 0"/></symbol>
+    <symbol id="ic-pen" viewBox="0 0 24 24"><path d="M4 20l1-4 11-11 3 3-11 11-4 1zM14 7l3 3"/></symbol>
+    <symbol id="ic-percent" viewBox="0 0 24 24"><path d="M6 18 18 6M8.5 8.5a1.5 1.5 0 1 0 .01 0M15.5 15.5a1.5 1.5 0 1 0 .01 0"/></symbol>
+    <symbol id="ic-clock" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 .01 0M12 8v4l3 2"/></symbol>
+    <symbol id="ic-calculator" viewBox="0 0 24 24"><path d="M6 3h12v18H6zM9 7h6M8 11h.01M12 11h.01M16 11v6M8 15h.01M12 15h.01M8 19h4"/></symbol>
+    <symbol id="ic-folders" viewBox="0 0 24 24"><path d="M4 8h6l2 2h8v9H4zM8 8V6h6l2 2"/></symbol>
+    <symbol id="ic-seal" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 5-3 7-7 9-4-2-7-4-7-9V6z M9 12l2 2 4-4"/></symbol>
+    <symbol id="ic-external" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-8 8M18 13v6H5V6h6"/></symbol>
+    <symbol id="ic-calendar" viewBox="0 0 24 24"><path d="M4 6h16v15H4zM4 10h16M8 3v4M16 3v4"/></symbol>
+    <symbol id="ic-sparkle" viewBox="0 0 24 24"><path d="M12 3l2 6 6 2-6 2-2 6-2-6-6-2 6-2z"/></symbol>
+  </svg>
+
+  <!-- ── NAVIGATION ─────────────────────────────────────────────────────── -->
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a class="nav__brand" href="#hero" aria-label="Shopfacture — accueil">
+        <span class="nav__coin" aria-hidden="true">s</span>
+        Shopfacture
+      </a>
+
+      <nav class="nav__links" aria-label="Navigation principale">
+        <a class="nav__link" href="#comment">Comment ça marche</a>
+        <a class="nav__link" href="#avantages">Avantages</a>
+        <a class="nav__link" href="#reforme">La réforme</a>
+        <a class="nav__link" href="#contact">Contact</a>
+      </nav>
+
+      <div class="nav__actions">
+        <!-- TODO_CALCOM_USERNAME : identifiant Cal.com pour la démo -->
+        <a class="btn btn--ghost btn--sm" href="https://cal.com/TODO_CALCOM_USERNAME/15min"
+           target="_blank" rel="noopener noreferrer">Voir une démo</a>
+        <a class="btn btn--primary btn--sm" href="#contact">Demander un devis</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ── HERO ─────────────────────────────────────────────────────────── -->
+    <section class="hero" id="hero">
+      <div class="container">
+        <span class="chip" data-reveal>
+          <svg class="icon chip__icon" aria-hidden="true"><use href="#ic-bolt"></use></svg>
+          Fini la paperasse du dimanche soir
+        </span>
+
+        <h1 class="hero__title" data-reveal>
+          Vos factures Shopify,
+          <span class="hero__accent">générées toutes seules<svg class="hero__underline" viewBox="0 0 300 14" preserveAspectRatio="none" aria-hidden="true"><path d="M2 9 C 60 3, 130 3, 180 7 S 280 11, 298 5"></path></svg></span>.
+        </h1>
+
+        <p class="hero__lead" data-reveal>
+          À chaque commande, Shopfacture crée la facture, calcule la TVA et la
+          range au bon endroit. Vous, pendant ce temps, vous vendez.
+        </p>
+
+        <div class="hero__ctas" data-reveal>
+          <a class="btn btn--primary btn--lg" href="#contact">
+            Demander un devis
+            <svg class="icon btn__icon" aria-hidden="true"><use href="#ic-arrow-right"></use></svg>
+          </a>
+          <!-- TODO_CALCOM_USERNAME : identifiant Cal.com pour la démo -->
+          <a class="btn btn--ghost btn--lg" href="https://cal.com/TODO_CALCOM_USERNAME/15min"
+             target="_blank" rel="noopener noreferrer">Voir une démo</a>
+        </div>
+
+        <div class="hero__proof avatars" data-reveal>
+          <span class="avatars__row" aria-hidden="true">
+            <span class="avatars__dot"></span>
+            <span class="avatars__dot"></span>
+            <span class="avatars__dot"></span>
+            <span class="avatars__dot"></span>
+          </span>
+          <span class="avatars__label">Déjà adopté par des centaines de marchands Shopify</span>
+        </div>
+
+        <!-- Tableau de bord factice (HTML/CSS) -->
+        <div class="hero__stage" data-reveal>
+          <div class="mock">
+            <div class="mock__bar">
+              <span class="mock__dot" aria-hidden="true"></span>
+              <span class="mock__dot" aria-hidden="true"></span>
+              <span class="mock__dot" aria-hidden="true"></span>
+              <span class="mock__app">Shopfacture · tableau de bord</span>
+            </div>
+
+            <div class="mock__grid">
+              <div class="mock__col">
+                <div class="mock__head">
+                  <svg class="icon" aria-hidden="true"><use href="#ic-bag"></use></svg>
+                  Commandes Shopify
+                </div>
+                <div class="mock__row"><span>#1042 · M. Durand</span><b class="mock__amount">89,00 €</b></div>
+                <div class="mock__row"><span>#1043 · Atelier Lou</span><b class="mock__amount">156,50 €</b></div>
+                <div class="mock__row"><span>#1044 · C. Petit</span><b class="mock__amount">42,00 €</b></div>
+              </div>
+
+              <div class="mock__bolt" aria-hidden="true">
+                <svg class="icon" aria-hidden="true"><use href="#ic-bolt"></use></svg>
+              </div>
+
+              <div class="mock__col">
+                <div class="mock__head">
+                  <svg class="icon" aria-hidden="true"><use href="#ic-receipt"></use></svg>
+                  Factures créées
+                </div>
+                <div class="mock__row mock__row--invoice"><span class="mock__ref">FA-2026-1042</span><span class="badge"><svg class="icon badge__icon" aria-hidden="true"><use href="#ic-check"></use></svg>envoyée</span></div>
+                <div class="mock__row mock__row--invoice"><span class="mock__ref">FA-2026-1043</span><span class="badge"><svg class="icon badge__icon" aria-hidden="true"><use href="#ic-check"></use></svg>envoyée</span></div>
+                <div class="mock__row mock__row--invoice"><span class="mock__ref">FA-2026-1044</span><span class="badge"><svg class="icon badge__icon" aria-hidden="true"><use href="#ic-check"></use></svg>envoyée</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── BANDEAU DE CONFIANCE ─────────────────────────────────────────── -->
+    <div class="trust">
+      <div class="container">
+        <div class="trust__row" data-reveal>
+          <span class="trust__label">Se connecte à :</span>
+          <span class="trust__item">Shopify</span>
+          <span class="trust__item">Abby</span>
+          <span class="trust__item">Factur-X</span>
+          <span class="trust__item">+ bientôt vos autres outils</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SECTION : PROBLÈME ───────────────────────────────────────────── -->
+    <section class="section" id="probleme">
+      <div class="container">
+        <div class="section__head" data-reveal>
+          <span class="eyebrow">Le quotidien d'un gérant</span>
+          <h2 class="section__title">La facturation vous vole vos soirées.</h2>
+          <p class="section__lead">Trois corvées qui reviennent à chaque vente — et qui n'ont rien à voir avec votre métier.</p>
+        </div>
+
+        <div class="problem__grid">
+          <article class="problem__card" data-reveal>
+            <span class="problem__icon" aria-hidden="true"><svg class="icon"><use href="#ic-pen"></use></svg></span>
+            <h3 class="problem__title">La ressaisie sans fin</h3>
+            <p class="problem__text">Chaque commande, vous la recopiez à la main dans votre outil de facture. Une vente = une corvée de plus.</p>
+          </article>
+
+          <article class="problem__card" data-reveal>
+            <span class="problem__icon" aria-hidden="true"><svg class="icon"><use href="#ic-percent"></use></svg></span>
+            <h3 class="problem__title">Les oublis et la TVA</h3>
+            <p class="problem__text">Une facture oubliée, un mauvais taux de TVA, une mention manquante… et c'est la tuile au moment du bilan.</p>
+          </article>
+
+          <article class="problem__card" data-reveal>
+            <span class="problem__icon" aria-hidden="true"><svg class="icon"><use href="#ic-clock"></use></svg></span>
+            <h3 class="problem__title">Le temps qui file</h3>
+            <p class="problem__text">Vos dimanches soir y passent — et la nouvelle loi sur la facturation vous inquiète plus qu'elle ne devrait.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SECTION : COMMENT ÇA MARCHE ──────────────────────────────────── -->
+    <section class="section section--flush-top" id="comment">
+      <div class="container">
+        <div class="section__head" data-reveal>
+          <span class="eyebrow">Comment ça marche</span>
+          <h2 class="section__title">Trois étapes. Cinq minutes. Puis plus rien à faire.</h2>
+        </div>
+
+        <div class="steps__grid">
+          <article class="card card--hover" data-reveal>
+            <div class="step__num step__num--terra" aria-hidden="true">1</div>
+            <h3 class="step__title">Branchez votre boutique</h3>
+            <p class="step__text">Connectez Shopify et votre compte Abby en quelques clics. Pas de code, pas de prise de tête.</p>
+          </article>
+
+          <article class="card card--hover" data-reveal>
+            <div class="step__num step__num--sage" aria-hidden="true">2</div>
+            <h3 class="step__title">Chaque commande crée sa facture</h3>
+            <p class="step__text">À chaque vente, la facture est générée, numérotée et envoyée au client — toute seule, en temps réel.</p>
+          </article>
+
+          <article class="card card--hover" data-reveal>
+            <div class="step__num step__num--ink" aria-hidden="true">3</div>
+            <h3 class="step__title">Vous n'y pensez plus</h3>
+            <p class="step__text">Vos factures sont conformes, archivées et accessibles d'un clic. Vous récupérez vos soirées.</p>
+          </article>
+        </div>
+
+        <div class="steps__stat" data-reveal>
+          <div class="stat">
+            <div class="stat__value">5<span class="stat__unit">h</span><small class="stat__caption">économisées par semaine*</small></div>
+            <div class="stat__body">
+              C'est le temps qu'un marchand passe en moyenne sur sa facturation à la main.
+              <span class="stat__note">*Estimation moyenne pour une petite boutique. Avec Shopfacture, ce temps tombe à zéro.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SECTION : AVANTAGES ──────────────────────────────────────────── -->
+    <section class="section section--flush-top" id="avantages">
+      <div class="container">
+        <div class="section__head" data-reveal>
+          <span class="eyebrow">Tout est inclus</span>
+          <h2 class="section__title">Pensé pour les marchands, pas pour les comptables.</h2>
+        </div>
+
+        <div class="benefits__grid">
+          <article class="feature" data-reveal>
+            <span class="feature__tile" aria-hidden="true"><svg class="icon"><use href="#ic-bolt"></use></svg></span>
+            <h3 class="feature__title">Générée en temps réel</h3>
+            <p class="feature__text">Une commande passe ? La facture part dans la seconde, sans que vous touchiez à rien.</p>
+          </article>
+
+          <article class="feature" data-reveal>
+            <span class="feature__tile feature__tile--sage" aria-hidden="true"><svg class="icon"><use href="#ic-calculator"></use></svg></span>
+            <h3 class="feature__title">TVA et mentions remplies</h3>
+            <p class="feature__text">Taux, mentions légales, numérotation : tout est rempli correctement, à chaque fois.</p>
+          </article>
+
+          <article class="feature" data-reveal>
+            <span class="feature__tile" aria-hidden="true"><svg class="icon"><use href="#ic-folders"></use></svg></span>
+            <h3 class="feature__title">Tout au même endroit</h3>
+            <p class="feature__text">Vos factures rangées, recherchables et téléchargeables quand vous voulez.</p>
+          </article>
+
+          <article class="feature" data-reveal>
+            <span class="feature__tile feature__tile--sage" aria-hidden="true"><svg class="icon"><use href="#ic-seal"></use></svg></span>
+            <h3 class="feature__title">Prêt pour la réforme</h3>
+            <p class="feature__text">Format Factur-X et archivage légal : vous êtes en règle pour 2026 et 2027, sans effort.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SECTION : RÉFORME ────────────────────────────────────────────── -->
+    <section class="section section--flush-top" id="reforme">
+      <div class="container">
+        <div class="reform__panel" data-reveal>
+          <div class="reform__intro">
+            <span class="eyebrow">Bonne nouvelle</span>
+            <h2 class="reform__title">La réforme arrive. Avec Shopfacture, vous êtes déjà prêt.</h2>
+            <p class="reform__text">
+              La facturation électronique devient obligatoire. Pas besoin de tout
+              comprendre : Shopfacture génère vos factures au bon format et les
+              archive comme la loi l'exige.
+            </p>
+            <a class="reform__link"
+               href="https://www.economie.gouv.fr/tout-savoir-sur-la-facturation-electronique-pour-les-entreprises"
+               target="_blank" rel="noopener noreferrer">
+              Tout savoir sur la facturation électronique
+              <svg class="icon" aria-hidden="true"><use href="#ic-external"></use></svg>
+            </a>
+          </div>
+
+          <div class="reform__timeline">
+            <div class="reform__row">
+              <span class="reform__date">Sept. 2026</span>
+              <span class="reform__detail">Toutes les entreprises doivent pouvoir recevoir des factures électroniques.</span>
+            </div>
+            <div class="reform__row">
+              <span class="reform__date">Sept. 2027</span>
+              <span class="reform__detail">Les TPE et PME doivent émettre leurs factures au format électronique structuré.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SECTION : CONTACT ────────────────────────────────────────────── -->
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="contact__head" data-reveal>
+          <span class="eyebrow">On s'y met ?</span>
+          <h2 class="contact__title">Reprenez vos soirées dès aujourd'hui.</h2>
+          <p class="contact__lead">Dites-nous un mot sur votre boutique. On vous montre Shopfacture en situation et on met tout en place — en 48&nbsp;h.</p>
+        </div>
+
+        <div class="contact__card card card--lg" data-reveal>
+          <form class="form" id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+            <!-- TODO_WEB3FORMS_KEY : clé d'accès Web3Forms (https://web3forms.com) -->
+            <input type="hidden" name="access_key" value="TODO_WEB3FORMS_KEY">
+            <input type="hidden" name="subject" value="Nouvelle demande Shopfacture">
+            <!-- Redirection de secours si JavaScript est désactivé. -->
+            <input type="hidden" name="redirect" value="https://shopfacture.fr/merci">
+            <!-- Anti-spam « honeypot » natif de Web3Forms. -->
+            <input type="checkbox" name="botcheck" class="visually-hidden" tabindex="-1" autocomplete="off">
+
+            <div class="form__body">
+              <div class="form__row">
+                <label class="field">
+                  <span class="field__label">Prénom</span>
+                  <span class="field__control">
+                    <input class="field__input" type="text" name="prenom" placeholder="Camille" autocomplete="given-name">
+                  </span>
+                </label>
+
+                <label class="field">
+                  <span class="field__label">Email</span>
+                  <span class="field__control">
+                    <input class="field__input" type="email" name="email" placeholder="vous@votreboutique.fr" required autocomplete="email">
+                  </span>
+                </label>
+              </div>
+
+              <label class="field">
+                <span class="field__label">Votre message <span class="form__note">(optionnel)</span></span>
+                <span class="field__control field__control--area">
+                  <textarea class="field__input" name="message" rows="3" placeholder="Parlez-nous de votre boutique : ce que vous vendez, combien de commandes par mois…"></textarea>
+                </span>
+              </label>
+
+              <p class="form__error" role="alert">Merci d'indiquer une adresse email valide.</p>
+
+              <!-- Cloudflare Turnstile — TODO_TURNSTILE_SITEKEY : clé publique du widget -->
+              <div class="cf-turnstile form__turnstile" data-sitekey="TODO_TURNSTILE_SITEKEY"></div>
+
+              <button class="btn btn--primary btn--lg" type="submit">
+                Envoyer
+                <svg class="icon btn__icon" aria-hidden="true"><use href="#ic-arrow-right"></use></svg>
+              </button>
+
+              <p class="form__note">Sans engagement · Réponse sous 24&nbsp;h ouvrées · Vos données restent en France.</p>
+            </div>
+
+            <div class="form__success" role="status">
+              <svg class="icon" aria-hidden="true"><use href="#ic-sparkle"></use></svg>
+              C'est noté ! On revient vers vous très vite avec une démo et la marche à suivre.
+            </div>
+          </form>
+
+          <div class="contact__rdv">
+            <!-- TODO_CALCOM_USERNAME : identifiant Cal.com -->
+            <a class="contact__rdv-link" href="https://cal.com/TODO_CALCOM_USERNAME/15min"
+               target="_blank" rel="noopener noreferrer">
+              <svg class="icon" aria-hidden="true"><use href="#ic-calendar"></use></svg>
+              Ou réserver directement un créneau de 15 min
+              <svg class="icon" aria-hidden="true"><use href="#ic-arrow-right"></use></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── FOOTER ───────────────────────────────────────────────────────────-->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand-col">
+          <span class="footer__brand">
+            <span class="footer__coin" aria-hidden="true">s</span>
+            Shopfacture
+          </span>
+          <p class="footer__tagline">Les factures de votre boutique Shopify, générées toutes seules. Plus de temps pour vendre, moins pour la paperasse.</p>
+        </div>
+
+        <div class="footer__col">
+          <h3 class="footer__heading">Produit</h3>
+          <a class="footer__link" href="#comment">Comment ça marche</a>
+          <a class="footer__link" href="#avantages">Avantages</a>
+          <a class="footer__link" href="#contact">Tarifs</a>
+          <a class="footer__link" href="#contact">Intégrations</a>
+        </div>
+
+        <div class="footer__col">
+          <h3 class="footer__heading">Ressources</h3>
+          <a class="footer__link" href="#reforme">La réforme</a>
+          <a class="footer__link" href="#contact">Contact</a>
+          <a class="footer__link" href="https://www.economie.gouv.fr/tout-savoir-sur-la-facturation-electronique-pour-les-entreprises" target="_blank" rel="noopener noreferrer">Guide facturation</a>
+        </div>
+
+        <div class="footer__col">
+          <h3 class="footer__heading">Société</h3>
+          <a class="footer__link" href="#contact">À propos</a>
+          <a class="footer__link" href="#">Mentions légales</a>
+          <a class="footer__link" href="#">Confidentialité</a>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <span>© 2026 Shopfacture. Fait avec soin en France.</span>
+        <span>🇫🇷 Support en français</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/nav.js" defer></script>
+  <script src="js/scroll.js" defer></script>
+  <script src="js/form.js" defer></script>
+
+  <!-- Cloudflare Web Analytics — TODO_CF_TOKEN : jeton du site Cloudflare -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js"
+    data-cf-beacon='{"token": "TODO_CF_TOKEN"}'></script>
+</body>
+</html>

@@ -1,0 +1,203 @@
+/* ── TOKENS ───────────────────────────────────────────────────────────────
+   Source : design system Shopfacture.
+   À MODIFIER ICI UNIQUEMENT — toutes les autres feuilles de style
+   consomment ces variables sans jamais redéfinir de valeur brute
+   (hex, px, rem, oklch…).
+────────────────────────────────────────────────────────────────────────── */
+
+:root {
+  /* ── COULEURS — palette primitive ──────────────────────────────────────
+     Tons chauds, éditoriaux, « fabriqué en France ». Exprimés en oklch
+     comme dans le design system d'origine. */
+
+  /* Neutres papier / encre */
+  --paper:        oklch(0.973 0.014 78);   /* fond de page — crème chaud      */
+  --surface:      oklch(0.995 0.006 80);   /* cartes / surfaces surélevées    */
+  --surface-sunk: oklch(0.97 0.012 70);    /* lignes en creux, puits          */
+  --ink:          oklch(0.26 0.018 55);    /* texte principal — quasi-noir    */
+  --ink-soft:     oklch(0.47 0.022 55);    /* texte secondaire                */
+  --ink-faint:    oklch(0.62 0.02 60);     /* texte tertiaire / légendes      */
+  --line:         oklch(0.9 0.015 70);     /* filets / bordures fines         */
+  --line-strong:  oklch(0.82 0.018 65);    /* séparateurs plus marqués        */
+
+  /* Terracotta — couleur d'accent de la marque */
+  --terra:        oklch(0.64 0.14 42);     /* base — boutons, liens, marques  */
+  --terra-deep:   oklch(0.52 0.13 40);     /* survol / pressé                 */
+  --terra-wash:   oklch(0.93 0.04 55);     /* fonds teintés, chips            */
+  --terra-ink:    oklch(0.42 0.12 40);     /* texte terracotta sur wash       */
+
+  /* Sage — couleur de soutien (« prêt », succès) */
+  --sage:         oklch(0.62 0.07 155);
+  --sage-deep:    oklch(0.5 0.07 155);
+  --sage-wash:    oklch(0.93 0.03 150);
+  --sage-ink:     oklch(0.42 0.06 155);
+
+  /* Pastilles « avatars » (preuve sociale) */
+  --avatar-1:     var(--terra);
+  --avatar-2:     var(--sage);
+  --avatar-3:     oklch(0.7 0.1 70);
+  --avatar-4:     oklch(0.6 0.08 30);
+
+  /* États */
+  --amber:        oklch(0.78 0.12 75);     /* « en cours »                    */
+  --amber-wash:   oklch(0.94 0.05 80);
+  --amber-ink:    oklch(0.5 0.1 70);
+  --danger:       oklch(0.58 0.16 28);     /* erreurs                         */
+  --danger-wash:  oklch(0.93 0.04 30);
+
+  /* Textes posés sur des aplats colorés */
+  --on-terra:     oklch(0.99 0.01 80);
+  --on-ink:       oklch(0.95 0.01 70);
+  --on-sage:      oklch(0.99 0.01 80);
+
+  /* Panneau sombre (bloc réforme, carte « avec Shopfacture ») */
+  --panel-ink-row: oklch(0.32 0.02 55);
+  --panel-ink-soft: oklch(0.82 0.01 70);
+  --panel-ink-faint: oklch(0.88 0.01 70);
+
+  /* ── ALIAS SÉMANTIQUES ─────────────────────────────────────────────────
+     Les composants visent ces noms quand l'intention compte plus que la
+     teinte exacte. */
+  --bg:               var(--paper);
+  --text-strong:      var(--ink);
+  --text-body:        var(--ink-soft);
+  --text-muted:       var(--ink-faint);
+  --surface-card:     var(--surface);
+  --surface-inset:    var(--surface-sunk);
+  --border-hairline:  var(--line);
+  --border-divider:   var(--line-strong);
+  --accent:           var(--terra);
+  --accent-hover:     var(--terra-deep);
+  --accent-tint:      var(--terra-wash);
+  --accent-ink:       var(--terra-ink);
+  --success:          var(--sage);
+  --success-tint:     var(--sage-wash);
+
+  /* ── TYPOGRAPHIE ───────────────────────────────────────────────────────
+     Bricolage Grotesque (display) + Hanken Grotesk (texte) + IBM Plex Mono
+     (références de facture, montants). */
+  --font-display: "Bricolage Grotesque", system-ui, sans-serif;
+  --font-body:    "Hanken Grotesk", system-ui, sans-serif;
+  --font-mono:    "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* Graisses */
+  --w-regular:  400;
+  --w-medium:   500;
+  --w-semibold: 600;
+  --w-bold:     700;
+  --w-black:    800;
+
+  /* Tailles fluides */
+  --fs-display:  clamp(40px, 6.4vw, 76px);
+  --fs-h1:       clamp(30px, 4.4vw, 52px);
+  --fs-h2:       clamp(26px, 3.4vw, 38px);
+  --fs-h3:       21px;   /* titres de carte                                  */
+  --fs-h4:       18px;
+  --fs-lead:     20px;   /* chapeau de hero / de section                     */
+  --fs-lg:       17px;
+  --fs-body:     15.5px; /* corps par défaut                                 */
+  --fs-sm:       14px;
+  --fs-xs:       13px;   /* eyebrows, légendes, labels                       */
+  --fs-2xs:      12px;   /* en-têtes de colonnes du mock                     */
+  --fs-micro:    11px;   /* badges de statut                                 */
+  --fs-stat:     clamp(64px, 11vw, 120px); /* chiffre géant du StatTile      */
+
+  /* Hauteurs de ligne */
+  --lh-display: 1.04;
+  --lh-tight:   1.15;
+  --lh-snug:    1.35;
+  --lh-body:    1.55;
+
+  /* Interlettrage */
+  --ls-display: -0.02em;
+  --ls-tight:   -0.03em;
+  --ls-eyebrow:  0.05em;
+  --ls-stat:    -0.04em;
+
+  /* ── ESPACEMENTS ───────────────────────────────────────────────────────
+     Échelle 4 px, comme le design system. */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-7:  28px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-14: 56px;
+  --space-16: 64px;
+  --space-22: 88px;   /* rythme vertical entre sections                      */
+
+  /* ── COMPOSANTS ────────────────────────────────────────────────────────*/
+  --radius-sm:   10px;
+  --radius-md:   16px;
+  --radius:      20px;   /* rayon de carte par défaut                        */
+  --radius-lg:   24px;
+  --radius-xl:   28px;   /* panneaux à la une                                */
+  --radius-pill: 100px;  /* boutons, chips, champs                           */
+  --radius-tile: 14px;   /* tuiles d'icône (feature / problème)              */
+
+  --pad-card:    28px;   /* padding interne d'une carte standard             */
+  --pad-card-lg: 34px;
+  --gap-card:    24px;   /* gouttière entre cartes                           */
+
+  /* Épaisseurs de bordure */
+  --bw-1: 1px;
+  --bw-2: 2px;
+
+  /* Paddings composites (paires haut/bas — droite/gauche) */
+  --pad-btn:      12px 22px;
+  --pad-btn-sm:   9px 16px;
+  --pad-btn-lg:   15px 28px;
+  --pad-badge:    4px 9px;
+  --pad-field:    14px 18px;
+  --pad-stat:     50px 40px;
+  --pad-mock-row: 13px 15px;
+
+  /* Dimensions fixes des composants (hors échelle d'espacement) */
+  --size-nav:       72px;  /* hauteur de la barre de navigation              */
+  --size-coin:      30px;  /* pastille logo dans la nav                      */
+  --size-coin-sm:   28px;  /* pastille logo dans le footer                   */
+  --size-tile:      46px;  /* tuile d'icône                                  */
+  --size-bolt:      52px;  /* pastille « éclair » du mock                    */
+  --size-step:      44px;  /* pastille numérotée des étapes                  */
+  --size-avatar:    24px;  /* pastille de la pile d'avatars                  */
+  --size-dot:       11px;  /* point de la barre du mock                      */
+  --size-textarea:  96px;  /* hauteur minimale de la zone de texte           */
+  --size-turnstile: 65px;  /* réservation de place pour le widget Turnstile  */
+  --blur-nav:       12px;  /* flou d'arrière-plan de la nav                  */
+  --reveal-shift:   18px;  /* décalage initial de l'apparition au scroll     */
+  --underline-shift: 8px;  /* descente du trait sous le mot accentué         */
+  --underline-h:    14px;  /* hauteur du trait dessiné sous le mot           */
+
+  /* Tailles d'icône (SVG inline) */
+  --icon-xs: 12px;
+  --icon-sm: 15px;
+  --icon-md: 22px;
+  --icon-lg: 24px;
+
+  --shadow-sm:   0 2px 6px -3px rgba(80, 40, 20, 0.25);
+  --shadow-card: 0 30px 50px -40px rgba(80, 40, 20, 0.5);
+  --shadow-hero: 0 40px 80px -50px rgba(80, 40, 20, 0.4);
+  --shadow-pop:  0 10px 24px -10px var(--terra);  /* halo sous les pastilles */
+
+  --transition-base: 200ms ease;
+  --transition-slow: 400ms ease;
+
+  /* Micro-déplacements au survol (translateY) */
+  --lift-sm: -1px;   /* boutons                                            */
+  --lift-md: -4px;   /* cartes                                             */
+
+  /* ── LAYOUT ────────────────────────────────────────────────────────────*/
+  --container:     1160px;
+  --container-pad: 28px;
+  --section-y:     88px;   /* padding vertical d'une section                 */
+
+  /* Largeurs maximales de blocs                                            */
+  --w-hero-stage:  880px;  /* tableau de bord factice du hero               */
+  --w-prose:       680px;  /* en-tête de la section contact                 */
+  --w-form:        560px;  /* carte du formulaire                           */
+  --w-reform-date: 108px;  /* colonne « date » de la frise réforme          */
+}
