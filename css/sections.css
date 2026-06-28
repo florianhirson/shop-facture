@@ -26,8 +26,9 @@
 }
 
 .hero__title {
-  max-width: 14ch;
+  max-width: 18ch;
   margin: var(--space-6) auto 0;
+  text-wrap: balance;
   font-size: var(--fs-display);
   font-weight: var(--w-black);
   letter-spacing: var(--ls-display);
